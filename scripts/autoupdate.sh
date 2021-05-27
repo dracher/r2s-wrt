@@ -2,12 +2,12 @@
 
 cd /mnt/mmcblk0p2
 rm -rf artifact artifact.zip FriendlyWrt*img*
-wget https://github.com/dracher/nanopi-openwrt/releases/download/R2S-Mini-$(date +%Y-%m-%d)/artifact.zip
+wget https://github.com/dracher/r2s-wrt/releases/download/R2S-Mini-$(date +%Y-%m-%d)/artifact.zip
 if [ -f /mnt/mmcblk0p2/artifact.zip ]; then
 	echo -e '\e[92m今天固件已下载，准备解压\e[0m'
 else
 	echo -e '\e[91m今天的固件还没更新，尝试下载昨天的固件\e[0m'
-	wget https://github.com/dracher/nanopi-openwrt/releases/download/R2S-Mini-$(date -d "@$(( $(busybox date +%s) - 86400))" +%Y-%m-%d)/artifact.zip
+	wget https://github.com/dracher/r2s-wrt/releases/download/R2S-Mini-$(date -d "@$(( $(busybox date +%s) - 86400))" +%Y-%m-%d)/artifact.zip
 	if [ -f /mnt/mmcblk0p2/artifact.zip ]; then
 		echo -e '\e[92m昨天的固件已下载，准备解压\e[0m'
 	else
